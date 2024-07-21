@@ -1,0 +1,42 @@
+html {
+	font-size: 1vw;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.app {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.sudoku-board {
+	width: 50rem;
+	height: 50rem;
+}
+
+.sudoku-board,
+.sudoku-segment {
+	background-color: black;
+	border: 1px solid black;
+	gap: 1px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+}
+
+.sudoku-cell {
+	background-color: antiquewhite;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
