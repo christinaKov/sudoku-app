@@ -5,7 +5,7 @@ import { useState } from "react";
 import BoardSegment from "../boardSegment/BoardSegment";
 
 const Board = () => {
-	const [segments, setSegments] = useState(Array.from(Array(9).keys()));
+	const [segments] = useState(Array.from(Array(9).keys()));
 
 	return (
 		<div className="sudoku-board">
