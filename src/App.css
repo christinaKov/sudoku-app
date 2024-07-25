@@ -39,4 +39,20 @@ html {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 2rem;
+	border: none;
+	text-align: center;
+	outline: none;
+}
+
+.sudoku-cell.is--empty {
+	font-weight: 700;
+}
+
+.sudoku-cell.is--empty.is--incorrect {
+	border: 0.3rem solid rgba(248, 51, 51, 0.866);
+}
+
+.sudoku-cell.is--empty.is--correct {
+	color: rgba(0, 128, 0, 0.731);
 }
