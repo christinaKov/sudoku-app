@@ -1,31 +1,29 @@
 // react
 import { useEffect } from "react";
 
-// components
-import BoardSegment from "../boardSegment/BoardSegment";
-
 // redux
 import { useDispatch, useSelector } from "react-redux";
 
 // store
 import { RootState } from "../../app/store";
-import { setDefaultSegments } from "../../app/sudokuSegmentsSlice";
+import { setSudokuGen } from "../../app/sudokuSlice";
+
+// components
+import BoardSegment from "../boardSegment/BoardSegment";
 
 const Board = () => {
 	const dispatch = useDispatch();
 
-	const segments = useSelector(
-		(state: RootState) => state.segments.basicSegments
-	);
+	const segments = useSelector((state: RootState) => state.sudoku.segments);
 
 	useEffect(() => {
-		dispatch(setDefaultSegments());
+		dispatch(setSudokuGen());
 	}, []);
 
 	return (
 		<div className="sudoku-board">
 			{segments.map((segment, i) => (
-				<BoardSegment segmentIndex={i} key={i}></BoardSegment>
+				<BoardSegment segment={segment} key={i}></BoardSegment>
 			))}
 		</div>
 	);

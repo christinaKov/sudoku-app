@@ -1,5 +1,7 @@
-const BoardCell = ({ cell }: { cell: number }) => {
-	return <div className="sudoku-cell">{cell}</div>;
+import { Cell } from "../../app/sudokuSlice";
+
+const BoardCell = ({ cell }: { cell: Cell }) => {
+	return <div className="sudoku-cell">{cell.value}</div>;
 };
 
 export default BoardCell;
