@@ -15,11 +15,11 @@
 ul {
 	list-style: none;
 	display: flex;
-	gap: 7rem;
+	gap: 5rem;
+	font-size: 1.5rem;
 }
 
-label {
-	font-size: 1.5rem;
+.header_item {
 	display: flex;
 	gap: 0.8rem;
 }

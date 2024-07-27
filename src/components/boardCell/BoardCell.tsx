@@ -1,7 +1,16 @@
+// react
 import { useEffect, useState } from "react";
-import { Cell } from "../../app/sudokuSlice";
+
+// redux
+import { useDispatch } from "react-redux";
+
+// slices
+import { Cell } from "../../app/slices/sudokuSlice";
+import { handleMistake } from "../../app/slices/gameSlice";
 
 const BoardCell = ({ cell }: { cell: Cell }) => {
+	const dispatch = useDispatch();
+
 	const [cellValue, setCellValue] = useState("");
 	const [isCorrect, setIsCorrect] = useState<boolean>(true);
 
@@ -16,7 +25,16 @@ const BoardCell = ({ cell }: { cell: Cell }) => {
 
 		if (eventData.match(/[0-9]+/) && eventData !== "") {
 			setCellValue(eventData);
-			setIsCorrect(cell.correctValue === eventData);
+			checkIfCorrect(eventData);
+		}
+	};
+
+	const checkIfCorrect = (newValue: string) => {
+		const isCorrect = cell.correctValue === newValue;
+		setIsCorrect(isCorrect);
+
+		if (!isCorrect) {
+			dispatch(handleMistake());
 		}
 	};
 

@@ -2,7 +2,7 @@
 import BoardCell from "../boardCell/BoardCell";
 
 // types
-import { Segment } from "../../app/sudokuSlice";
+import { Segment } from "../../app/slices/sudokuSlice";
 
 const BoardSegment = ({ segment }: { segment: Segment }) => {
 	return (

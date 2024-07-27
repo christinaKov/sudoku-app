@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-// slice
-import sudokuReducer from "./sudokuSlice";
+// slices
+import sudokuReducer from "./slices/sudokuSlice";
+import gameReducer from "./slices/gameSlice";
 
 export const store = configureStore({
 	reducer: {
 		sudoku: sudokuReducer,
+		game: gameReducer,
 	},
 });
 

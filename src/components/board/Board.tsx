@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // store
 import { RootState } from "../../app/store";
-import { setSudokuGen } from "../../app/sudokuSlice";
+import { setSudokuGen } from "../../app/slices/sudokuSlice";
 
 // components
 import BoardSegment from "../boardSegment/BoardSegment";

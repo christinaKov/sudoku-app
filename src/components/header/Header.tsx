@@ -4,11 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 
 // redux
-import { useDispatch } from "react-redux";
-import { setSudokuGen, setDifficulty } from "../../app/sudokuSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+
+//slices
+import { setSudokuGen, setDifficulty } from "../../app/slices/sudokuSlice";
 
 const Header = () => {
 	const dispatch = useDispatch();
+
+	const mistakesCounter = useSelector(
+		(state: RootState) => state.game.mistakesCounter
+	);
 
 	const handleReset = () => {
 		dispatch(setSudokuGen());
@@ -24,7 +31,7 @@ const Header = () => {
 			<nav>
 				<ul>
 					<li>
-						<label htmlFor="">
+						<label className="header_item">
 							Difficulty:
 							<select onChange={handleDifficultyChange} defaultValue={""}>
 								<option value="">Random</option>
@@ -34,6 +41,12 @@ const Header = () => {
 								<option value="expert">Expert</option>
 							</select>
 						</label>
+					</li>
+					<li className="header_item">
+						<p>Mistakes:</p>
+						<p>
+							<span>{mistakesCounter}</span>/<span>3</span>
+						</p>
 					</li>
 					<li>
 						<div onClick={handleReset} className="reset-game_container">

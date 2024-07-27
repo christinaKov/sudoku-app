@@ -29,8 +29,7 @@ export const sudokuSlice = createSlice({
 	initialState,
 	reducers: {
 		setSudokuGen: (state) => {
-			const { puzzle, solution, difficulty } = getSudoku(state.difficulty); // generates sudoku game
-			console.log(state.difficulty, difficulty);
+			const { puzzle, solution } = getSudoku(state.difficulty); // generates sudoku game
 
 			const sudokuPuzzle = puzzle
 				.split("")
