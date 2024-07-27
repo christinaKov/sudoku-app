@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Cell } from "../../app/sudokuSlice";
 
 const BoardCell = ({ cell }: { cell: Cell }) => {
-	const [cellValue, setCellValue] = useState(
-		cell.value === "-" ? "" : cell.value
-	);
+	const [cellValue, setCellValue] = useState("");
 	const [isCorrect, setIsCorrect] = useState<boolean>(true);
+
+	useEffect(() => {
+		const currentValue = cell.value === "-" ? "" : cell.value;
+		setCellValue(currentValue);
+	}, [cell]);
 
 	const handleCellChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const nativeEvent = e.nativeEvent as InputEvent;
