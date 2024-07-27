@@ -14,10 +14,36 @@
 
 ul {
 	list-style: none;
+	display: flex;
+	gap: 7rem;
 }
 
 label {
 	font-size: 1.5rem;
 	display: flex;
-	gap: 1rem;
+	gap: 0.8rem;
+}
+
+.reset-game_container {
+	font-size: 1.5rem;
+	cursor: pointer;
+	position: relative;
+}
+
+.reset-game_tooltip {
+	position: absolute;
+	font-size: 1rem;
+	background-color: rgb(251, 224, 187);
+	padding: 0.5rem;
+	text-wrap: nowrap;
+	bottom: -180%;
+	left: -130%;
+	border-radius: 0.3rem;
+	opacity: 0;
+	transition: opacity 0.2s ease-in-out;
+	pointer-events: none;
+}
+
+.reset-game_container:hover .reset-game_tooltip {
+	opacity: 0.8;
 }
