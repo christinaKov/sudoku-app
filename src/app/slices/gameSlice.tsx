@@ -20,9 +20,13 @@ export const gameSlice = createSlice({
 				state.status = "over";
 			}
 		},
+		resetGame: (state) => {
+			state.mistakesCounter = initialState.mistakesCounter;
+			state.status = initialState.status;
+		},
 	},
 });
 
-export const { handleMistake } = gameSlice.actions;
+export const { handleMistake, resetGame } = gameSlice.actions;
 
 export default gameSlice.reducer;

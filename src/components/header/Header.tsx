@@ -9,6 +9,7 @@ import { RootState } from "../../app/store";
 
 //slices
 import { setSudokuGen, setDifficulty } from "../../app/slices/sudokuSlice";
+import { resetGame } from "../../app/slices/gameSlice";
 
 const Header = () => {
 	const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Header = () => {
 
 	const handleReset = () => {
 		dispatch(setSudokuGen());
+		dispatch(resetGame());
 	};
 
 	const handleDifficultyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
