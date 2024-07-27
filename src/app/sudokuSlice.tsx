@@ -3,6 +3,8 @@ import { getSudoku } from "sudoku-gen";
 
 import { createSlice } from "@reduxjs/toolkit";
 
+export type Difficulty = "easy" | "medium" | "hard" | "expert";
+
 export interface Cell {
 	value: string;
 	correctValue: string;
@@ -14,10 +16,12 @@ export interface Segment {
 
 export interface SudokuState {
 	segments: Segment[];
+	difficulty: Difficulty | undefined;
 }
 
 const initialState: SudokuState = {
 	segments: [],
+	difficulty: undefined,
 };
 
 export const sudokuSlice = createSlice({
@@ -25,7 +29,8 @@ export const sudokuSlice = createSlice({
 	initialState,
 	reducers: {
 		setSudokuGen: (state) => {
-			const { puzzle, solution } = getSudoku("easy"); // generates sudoku game
+			const { puzzle, solution, difficulty } = getSudoku(state.difficulty); // generates sudoku game
+			console.log(state.difficulty, difficulty);
 
 			const sudokuPuzzle = puzzle
 				.split("")
@@ -44,9 +49,13 @@ export const sudokuSlice = createSlice({
 
 			state.segments = segments;
 		},
+		setDifficulty: (state, action) => {
+			const difficulty = action.payload;
+			state.difficulty = difficulty === "" ? undefined : difficulty;
+		},
 	},
 });
 
-export const { setSudokuGen } = sudokuSlice.actions;
+export const { setSudokuGen, setDifficulty } = sudokuSlice.actions;
 
 export default sudokuSlice.reducer;
