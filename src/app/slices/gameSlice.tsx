@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type GameStatus = "in-progress" | "game-over";
+
 export interface Game {
 	mistakesCounter: number;
-	status: string;
+	status: GameStatus;
 }
 
 const initialState: Game = {
@@ -17,7 +19,7 @@ export const gameSlice = createSlice({
 		handleMistake: (state) => {
 			state.mistakesCounter = state.mistakesCounter + 1;
 			if (state.mistakesCounter >= 3) {
-				state.status = "over";
+				state.status = "game-over";
 			}
 		},
 		resetGame: (state) => {

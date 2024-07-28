@@ -8,20 +8,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
 //slices
-import { setSudokuGen, setDifficulty } from "../../app/slices/sudokuSlice";
-import { resetGame } from "../../app/slices/gameSlice";
+import { setDifficulty } from "../../app/slices/sudokuSlice";
+
+// hooks
+import { useStartGame } from "../../hooks/startGameHook";
 
 const Header = () => {
 	const dispatch = useDispatch();
 
+	const startGame = useStartGame();
+
 	const mistakesCounter = useSelector(
 		(state: RootState) => state.game.mistakesCounter
 	);
-
-	const handleReset = () => {
-		dispatch(setSudokuGen());
-		dispatch(resetGame());
-	};
 
 	const handleDifficultyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		dispatch(setDifficulty(e.target.value));
@@ -51,7 +50,7 @@ const Header = () => {
 						</p>
 					</li>
 					<li>
-						<div onClick={handleReset} className="reset-game_container">
+						<div onClick={startGame} className="reset-game_container">
 							<div className="reset-game_tooltip">Start Again</div>
 							<FontAwesomeIcon
 								icon={faArrowsRotate}

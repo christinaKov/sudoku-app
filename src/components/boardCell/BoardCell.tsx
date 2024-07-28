@@ -17,6 +17,7 @@ const BoardCell = ({ cell }: { cell: Cell }) => {
 	useEffect(() => {
 		const currentValue = cell.value === "-" ? "" : cell.value;
 		setCellValue(currentValue);
+		setIsCorrect(true);
 	}, [cell]);
 
 	const handleCellChange = (e: React.ChangeEvent<HTMLInputElement>) => {
