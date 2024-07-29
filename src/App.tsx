@@ -16,7 +16,7 @@ function App() {
 		<div className="app">
 			<Header></Header>
 			<Board></Board>
-			{gameStatus === "game-over" && <GameInfoPopup></GameInfoPopup>}
+			{gameStatus !== "in-progress" && <GameInfoPopup></GameInfoPopup>}
 		</div>
 	);
 }

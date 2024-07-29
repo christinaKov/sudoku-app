@@ -40,3 +40,9 @@
 	background-color: rgb(137, 122, 105);
 	color: white;
 }
+
+.difficulty_label {
+	font-size: 1.5rem;
+	display: flex;
+	gap: 0.5rem;
+}

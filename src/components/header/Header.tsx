@@ -6,43 +6,24 @@ import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-
-//slices
-import { setDifficulty } from "../../app/slices/sudokuSlice";
-
-// hooks
-import { useStartGame } from "../../hooks/startGameHook";
+import { createNewGame } from "../../app/slices/gameSlice";
 
 const Header = () => {
 	const dispatch = useDispatch();
 
-	const startGame = useStartGame();
+	const handleReset = () => {
+		dispatch(createNewGame());
+	};
 
 	const mistakesCounter = useSelector(
 		(state: RootState) => state.game.mistakesCounter
 	);
-
-	const handleDifficultyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		dispatch(setDifficulty(e.target.value));
-	};
 
 	return (
 		<header className="header">
 			<h1 className="main-title">Sudoku</h1>
 			<nav>
 				<ul>
-					<li>
-						<label className="header_item">
-							Difficulty:
-							<select onChange={handleDifficultyChange} defaultValue={""}>
-								<option value="">Random</option>
-								<option value="easy">Easy</option>
-								<option value="medium">Medium</option>
-								<option value="hard">Hard</option>
-								<option value="expert">Expert</option>
-							</select>
-						</label>
-					</li>
 					<li className="header_item">
 						<p>Mistakes:</p>
 						<p>
@@ -50,7 +31,7 @@ const Header = () => {
 						</p>
 					</li>
 					<li>
-						<div onClick={startGame} className="reset-game_container">
+						<div onClick={handleReset} className="reset-game_container">
 							<div className="reset-game_tooltip">Start Again</div>
 							<FontAwesomeIcon
 								icon={faArrowsRotate}
