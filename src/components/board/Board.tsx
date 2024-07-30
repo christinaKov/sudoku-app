@@ -9,7 +9,7 @@ import { RootState } from "../../app/store";
 import { setSudokuGen } from "../../app/slices/sudokuSlice";
 
 // components
-import BoardSegment from "../boardSegment/BoardSegment";
+import BoardSegment from "./boardSegment/BoardSegment";
 
 const Board = () => {
 	const dispatch = useDispatch();

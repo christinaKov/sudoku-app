@@ -1,6 +1,6 @@
 // redux
 import { useDispatch } from "react-redux";
-import { setDifficulty } from "../../app/slices/sudokuSlice";
+import { setDifficulty } from "../../../app/slices/sudokuSlice";
 
 const DifficultySelect = () => {
 	const dispatch = useDispatch();

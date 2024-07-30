@@ -1,18 +1,24 @@
 // styles
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faPencil } from "@fortawesome/free-solid-svg-icons";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import { createNewGame } from "../../app/slices/gameSlice";
+import { createNewGame, toggleGameMode } from "../../app/slices/gameSlice";
 
 const Header = () => {
 	const dispatch = useDispatch();
 
+	const gameMode = useSelector((state: RootState) => state.game.mode);
+
 	const handleReset = () => {
 		dispatch(createNewGame());
+	};
+
+	const handleDraftMode = () => {
+		dispatch(toggleGameMode());
 	};
 
 	const mistakesCounter = useSelector(
@@ -24,6 +30,15 @@ const Header = () => {
 			<h1 className="main-title">Sudoku</h1>
 			<nav>
 				<ul>
+					<li>
+						<div onClick={handleDraftMode} className="header_tooltip-container">
+							<div className="reset-game_tooltip">Draft Mode</div>
+							<div className="header_draft-info">
+								{gameMode === "draft" ? "On" : "Off"}
+							</div>
+							<FontAwesomeIcon icon={faPencil} className="header_draft-icon" />
+						</div>
+					</li>
 					<li className="header_item">
 						<p>Mistakes:</p>
 						<p>
@@ -31,12 +46,9 @@ const Header = () => {
 						</p>
 					</li>
 					<li>
-						<div onClick={handleReset} className="reset-game_container">
+						<div onClick={handleReset} className="header_tooltip-container">
 							<div className="reset-game_tooltip">Start Again</div>
-							<FontAwesomeIcon
-								icon={faArrowsRotate}
-								className="reset-game_btn"
-							/>
+							<FontAwesomeIcon icon={faArrowsRotate} />
 						</div>
 					</li>
 				</ul>

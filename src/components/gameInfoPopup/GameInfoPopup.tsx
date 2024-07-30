@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
 // components
-import DifficultySelect from "../difficultySelect/DifficultySelect";
+import DifficultySelect from "./difficultySelect/DifficultySelect";
 
 const GameInfoPopup = () => {
 	const startGame = useStartGame();

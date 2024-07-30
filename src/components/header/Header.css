@@ -24,7 +24,7 @@ ul {
 	gap: 0.8rem;
 }
 
-.reset-game_container {
+.header_tooltip-container {
 	font-size: 1.5rem;
 	cursor: pointer;
 	position: relative;
@@ -32,18 +32,33 @@ ul {
 
 .reset-game_tooltip {
 	position: absolute;
-	font-size: 1rem;
 	background-color: rgb(251, 224, 187);
 	padding: 0.5rem;
+	border-radius: 0.3rem;
+	font-size: 1rem;
 	text-wrap: nowrap;
 	bottom: -180%;
 	left: -130%;
-	border-radius: 0.3rem;
 	opacity: 0;
 	transition: opacity 0.2s ease-in-out;
 	pointer-events: none;
 }
 
-.reset-game_container:hover .reset-game_tooltip {
+.header_tooltip-container:hover .reset-game_tooltip {
 	opacity: 0.8;
+}
+
+.header_draft-icon {
+	position: relative;
+	z-index: 1;
+}
+
+.header_draft-info {
+	position: absolute;
+	background-color: rgb(251, 224, 187);
+	font-size: 1.5rem;
+	top: -100%;
+	right: -200%;
+	padding: 0.5rem 0.7rem;
+	border-radius: 1rem;
 }

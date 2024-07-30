@@ -5,11 +5,13 @@ type GameStatus = "not-started" | "in-progress" | "game-over";
 export interface Game {
 	mistakesCounter: number;
 	status: GameStatus;
+	mode: "game" | "draft";
 }
 
 const initialState: Game = {
 	mistakesCounter: 0,
 	status: "not-started",
+	mode: "game",
 };
 
 export const gameSlice = createSlice({
@@ -29,9 +31,13 @@ export const gameSlice = createSlice({
 			state.status = "in-progress";
 			state.mistakesCounter = initialState.mistakesCounter;
 		},
+		toggleGameMode: (state) => {
+			state.mode === "game" ? (state.mode = "draft") : (state.mode = "game");
+		},
 	},
 });
 
-export const { handleMistake, createNewGame, startNewGame } = gameSlice.actions;
+export const { handleMistake, createNewGame, startNewGame, toggleGameMode } =
+	gameSlice.actions;
 
 export default gameSlice.reducer;

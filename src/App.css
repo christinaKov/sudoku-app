@@ -46,3 +46,7 @@
 .sudoku-cell.is--empty.is--correct {
 	color: rgba(0, 128, 0, 0.731);
 }
+
+.sudoku-cell.is--empty.is--draft {
+	color: gray;
+}

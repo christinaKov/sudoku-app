@@ -1,8 +1,8 @@
 // components
-import BoardCell from "../boardCell/BoardCell";
+import BoardCell from "../boardSegment/boardCell/BoardCell";
 
 // types
-import { Segment } from "../../app/slices/sudokuSlice";
+import { Segment } from "../../../app/slices/sudokuSlice";
 
 const BoardSegment = ({ segment }: { segment: Segment }) => {
 	return (
