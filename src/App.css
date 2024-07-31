@@ -37,6 +37,7 @@
 
 .sudoku-cell.is--empty {
 	font-weight: 700;
+	cursor: pointer;
 }
 
 .sudoku-cell.is--empty.is--incorrect {

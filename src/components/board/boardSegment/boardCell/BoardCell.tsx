@@ -27,9 +27,10 @@ const BoardCell = ({ cell }: { cell: Cell }) => {
 
 	const handleCellChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const nativeEvent = e.nativeEvent as InputEvent;
-		const eventData = nativeEvent.data || "";
+		const eventData =
+			gameMode === "game" ? nativeEvent.data || "" : e.target.value;
 
-		if (eventData.match(/[0-9]+/) && eventData !== "") {
+		if (eventData.match(/[0-9]+/)) {
 			setCellValue(eventData);
 			setIsCellDraft(gameMode === "draft");
 			setIsChanged(true);
