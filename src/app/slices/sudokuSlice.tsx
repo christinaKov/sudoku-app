@@ -28,6 +28,16 @@ export const sudokuSlice = createSlice({
 	name: "sudoku",
 	initialState,
 	reducers: {
+		setEmptySudoku: (state) => {
+			const segments: Segment[] = [...Array(9).keys()].map((n) => ({
+				cells: [...Array(9).keys()].map((cell) => ({
+					value: "",
+					correctValue: "",
+				})),
+			}));
+
+			state.segments = segments;
+		},
 		setSudokuGen: (state) => {
 			const { puzzle, solution } = getSudoku(state.difficulty); // generates sudoku game
 
@@ -70,6 +80,7 @@ export const sudokuSlice = createSlice({
 	},
 });
 
-export const { setSudokuGen, setDifficulty } = sudokuSlice.actions;
+export const { setSudokuGen, setDifficulty, setEmptySudoku } =
+	sudokuSlice.actions;
 
 export default sudokuSlice.reducer;

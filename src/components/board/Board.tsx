@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // store
 import { RootState } from "../../app/store";
-import { setSudokuGen } from "../../app/slices/sudokuSlice";
+import { setEmptySudoku } from "../../app/slices/sudokuSlice";
 
 // components
 import BoardSegment from "./boardSegment/BoardSegment";
@@ -17,7 +17,7 @@ const Board = () => {
 	const segments = useSelector((state: RootState) => state.sudoku.segments);
 
 	useEffect(() => {
-		dispatch(setSudokuGen());
+		dispatch(setEmptySudoku());
 	}, []);
 
 	return (
