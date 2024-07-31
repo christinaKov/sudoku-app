@@ -35,14 +35,29 @@ export const sudokuSlice = createSlice({
 				.split("")
 				.map((cell, i) => ({ value: cell, correctValue: solution[i] })); // returns objects with sudoku value + sudoku correct value for each cell
 
-			const segments: Segment[] = [];
+			const segments: Segment[] = [...Array(9).keys()].map((n) => ({
+				cells: [],
+			}));
 
+			let currentSegmentIndex = 0;
 			sudokuPuzzle.forEach((cell, i) => {
-				const segmentIndex = Math.floor(i / 9);
-				if (segments[segmentIndex]) {
-					segments[segmentIndex].cells.push(cell);
-				} else {
-					segments[segmentIndex] = { cells: [cell] };
+				segments[currentSegmentIndex].cells.push(cell);
+
+				if (i % 3 === 2) {
+					// change segment every 3 cells
+					if (currentSegmentIndex % 3 === 2) {
+						// if segment is 3rd in a row then:
+						if (segments[currentSegmentIndex].cells.length === 9) {
+							// if this row is full, change segment to first in a new row
+							currentSegmentIndex += 1;
+						} else {
+							// if it's not full, return to first segment in a row
+							currentSegmentIndex -= 2;
+						}
+					} else {
+						// is its not the last segment in a row, just keep going in a row
+						currentSegmentIndex++;
+					}
 				}
 			});
 
