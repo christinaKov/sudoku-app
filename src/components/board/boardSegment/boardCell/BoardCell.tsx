@@ -28,13 +28,16 @@ const BoardCell = ({ cell }: { cell: Cell }) => {
 	const handleCellChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const nativeEvent = e.nativeEvent as InputEvent;
 		const eventData =
-			gameMode === "game" ? nativeEvent.data || "" : e.target.value;
+			gameMode === "game"
+				? nativeEvent.data || ""
+				: e.target.value.replace(/\D/g, "");
+		console.log(eventData);
 
-		if (eventData.match(/[0-9]+/)) {
+		if (eventData.match(/[0-9]+/) || eventData === "") {
 			setCellValue(eventData);
 			setIsCellDraft(gameMode === "draft");
 			setIsChanged(true);
-			if (gameMode === "game") {
+			if (gameMode === "game" && eventData !== "") {
 				checkIfCorrect(eventData);
 			}
 		}
