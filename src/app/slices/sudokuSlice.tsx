@@ -29,8 +29,8 @@ export const sudokuSlice = createSlice({
 	initialState,
 	reducers: {
 		setEmptySudoku: (state) => {
-			const segments: Segment[] = [...Array(9).keys()].map((n) => ({
-				cells: [...Array(9).keys()].map((cell) => ({
+			const segments: Segment[] = [...Array(9).keys()].map(() => ({
+				cells: [...Array(9).keys()].map(() => ({
 					value: "",
 					correctValue: "",
 				})),
@@ -45,7 +45,7 @@ export const sudokuSlice = createSlice({
 				.split("")
 				.map((cell, i) => ({ value: cell, correctValue: solution[i] })); // returns objects with sudoku value + sudoku correct value for each cell
 
-			const segments: Segment[] = [...Array(9).keys()].map((n) => ({
+			const segments: Segment[] = [...Array(9).keys()].map(() => ({
 				cells: [],
 			}));
 
