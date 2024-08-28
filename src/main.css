@@ -7,3 +7,15 @@ html {
 	margin: 0;
 	box-sizing: border-box;
 }
+
+@media (max-width: 900px) {
+	html {
+		font-size: 1.5vw;
+	}
+}
+
+@media (max-width: 500px) {
+	html {
+		font-size: 2vw;
+	}
+}
