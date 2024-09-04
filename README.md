@@ -1,7 +1,7 @@
 # Sudoku Game
 
 This is a basic Sudoku game built using React, TypeScript, and Vite.
-You can check it out by this link: https://sudoku-dvlbpb72d-christinakovs-projects.vercel.app
+You can check it out by this link: https://sudoku-app-tau.vercel.app
 
 ## Table of Contents
 
